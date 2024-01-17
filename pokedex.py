@@ -3,9 +3,9 @@ import json
 from tkinter import *
 from PIL import Image, ImageTk
 from io import BytesIO
-import webbrowser
+import webbrowser #webbrowser library for connecting to the browser
 from tkinter import messagebox
-from playsound import playsound
+from playsound import playsound #installed playsound library for adding audio
 
 main = Tk()
 main.title("Pokedex")
@@ -16,7 +16,7 @@ main['bg']='#A1C0EF'
 file_name = 'pokemon_info.json' #json file where the info from api is stored
 
 def audio():
-    playsound("game_audio.mp3")
+    playsound("game_audio.mp3") #installed playsound library for playing audio
 
 #function to display general pokemon info
 def pokemon_info(pokemon_name): #name or id can be used
@@ -66,7 +66,7 @@ def location(id):
 def pokemon_characteristic(id):
     url = f'https://pokeapi.co/api/v2/characteristic/{id}/'
     response = requests.get(url)
-    if response.status_code==404: #no content available
+    if response.status_code==404: #no content available - error code 404
         messagebox.showinfo("showinfo", "No Information Found")
         response.raise_for_status() 
     data = response.json()
@@ -108,7 +108,7 @@ Label(frame1, text='POKEMON NAME :',font=('Lucida Console', 12)).place(x=30, y=4
 input_poke_name = Entry(frame1, width=25)
 input_poke_name.place(x=200,y=480)
 
-def link():
+def link(): #webbrowser library to open browser tab
     webbrowser.open_new("https://bulbapedia.bulbagarden.net/wiki/List_of_Pok%C3%A9mon_by_National_Pok%C3%A9dex_number")
 
 #instructions
@@ -184,6 +184,6 @@ Button(frame4, text='GENERAL INFO',font=('Lucida Console', 11), bg='#C6A969',bor
 
 #the first display frame is frame1
 switchFrame(frame1)
-audio()
+audio() #audio plays before the tk window opens
 
 main.mainloop()
