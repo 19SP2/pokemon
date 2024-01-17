@@ -3,6 +3,7 @@ import json
 from tkinter import *
 from PIL import Image, ImageTk
 from io import BytesIO
+import webbrowser
 
 main = Tk()
 main.title("Pokedex")
@@ -93,12 +94,20 @@ resized_image= bg_img.resize((380,630))
 bg_img= ImageTk.PhotoImage(resized_image)
 Label(frame1, image=bg_img).place(x=0, y=0)
 
-Label(frame1, text="LET THE BATTLE BEGIN!",font=('Lucida Console', 14),bg='#C6A969',border=8).place(x=60, y=480)
-Label(frame1, text='POKEMON NAME :',font=('Lucida Console', 12)).place(x=30, y=530)
+Label(frame1, text="LET THE BATTLE BEGIN!",font=('Lucida Console', 14),bg='#C6A969',border=8).place(x=60, y=430)
+Label(frame1, text='POKEMON NAME :',font=('Lucida Console', 12)).place(x=30, y=480)
 
 #entry field for user to input pokemon name/id 
 input_poke_name = Entry(frame1, width=25)
-input_poke_name.place(x=200,y=530)
+input_poke_name.place(x=200,y=480)
+
+def link():
+    webbrowser.open_new("https://bulbapedia.bulbagarden.net/wiki/List_of_Pok%C3%A9mon_by_National_Pok%C3%A9dex_number")
+
+#instructions
+Label(frame1, text="Search for Pokemon name/id",font=('Lucida Console', 10),bg='#C6A969',border=2).place(x=60, y=520)
+Button(frame1, text='here',font=('Lucida Console', 10), bg='#C6A969',border=2,command=lambda:link()).place(x=280, y=520)
+Label(frame1, text="Or try bulbasaur, in all lower case",font=('Lucida Console', 10),bg='#C6A969',border=2).place(x=50, y=545)
 
 #button calls switchFrame(frame2), get_data(), and pokemon_info(pokemon_name) function
 Button(frame1, text='FIND',font=('Lucida Console', 14), bg='#C6A969',border=8,command=lambda:[switchFrame(frame2), get_data(), pokemon_info(pokemon_name)]).place(x=150, y=570)
