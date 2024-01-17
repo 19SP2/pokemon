@@ -12,6 +12,8 @@ main.title("Pokedex")
 main.geometry("400x650")
 main.resizable(0,0)
 main['bg']='#A1C0EF'
+#to change the icon of tk window
+main.iconphoto(False, ImageTk.PhotoImage(file='pokeball.png'))
 
 file_name = 'pokemon_info.json' #json file where the info from api is stored
 
