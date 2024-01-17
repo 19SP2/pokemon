@@ -5,6 +5,7 @@ from PIL import Image, ImageTk
 from io import BytesIO
 import webbrowser
 from tkinter import messagebox
+from playsound import playsound
 
 main = Tk()
 main.title("Pokedex")
@@ -13,6 +14,9 @@ main.resizable(0,0)
 main['bg']='#A1C0EF'
 
 file_name = 'pokemon_info.json' #json file where the info from api is stored
+
+def audio():
+    playsound("game_audio.mp3")
 
 #function to display general pokemon info
 def pokemon_info(pokemon_name): #name or id can be used
@@ -62,7 +66,7 @@ def location(id):
 def pokemon_characteristic(id):
     url = f'https://pokeapi.co/api/v2/characteristic/{id}/'
     response = requests.get(url)
-    if response.status_code==404:
+    if response.status_code==404: #no content available
         messagebox.showinfo("showinfo", "No Information Found")
         response.raise_for_status() 
     data = response.json()
@@ -180,5 +184,6 @@ Button(frame4, text='GENERAL INFO',font=('Lucida Console', 11), bg='#C6A969',bor
 
 #the first display frame is frame1
 switchFrame(frame1)
+audio()
 
 main.mainloop()
