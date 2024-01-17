@@ -117,13 +117,13 @@ canvas1 = Canvas(frame2, width=335, height=250,highlightbackground="blue", highl
 canvas1.place(x=20, y=15)
 
 #button to return to home
-Button(frame2, text='⌂', fg='white', bg='brown', command=lambda:switchFrame(frame1)).place(x=360, y=0)
+Button(frame2, text='⌂', fg='white', bg='brown',width=3, command=lambda:switchFrame(frame1)).place(x=350, y=0)
 
 name_label = Label(canvas1,font=('Lucida Console', 17))
 name_label.place(x=5, y=5)
 
 id_label = Label(canvas1,font=('Lucida Console', 17))
-id_label.place(x=300, y=5)
+id_label.place(x=290, y=5)
 
 #frame to display characteristics of pokemon
 frame4 = Frame(frame2, width=335, height=330, bg='#C6A969',highlightbackground="blue", highlightthickness=2)
@@ -150,7 +150,9 @@ moves_label = Text(frame3, font=('Lucida Console', 12), height=8, width=16)
 moves_label.place(x=120, y=110)
 
 #button to call switchFrame(frame4), and pokemon_characteristic(id) function
-Button(frame3, text='CHARACTERISTICS',font=('Lucida Console', 14), bg='#C6A969',border=8, command=lambda:[switchFrame(frame4),pokemon_characteristic(id)]).place(x=70, y=260)
+Button(frame3, text='CHARACTERISTICS',font=('Lucida Console', 11), bg='#C6A969',border=4, command=lambda:[switchFrame(frame4),pokemon_characteristic(id)]).place(x=15, y=260)
+#button to switchFrame(frame3)
+Button(frame3, text='GENERAL INFO',font=('Lucida Console', 11), bg='#C6A969',border=4, command=lambda:switchFrame(frame3)).place(x=190, y=260)
 
 Label(frame4,text='⟡ GENE MODULO',font=('Lucida Console', 12)).place(x=20, y=20)
 gene_label = Label(frame4,font=('Lucida Console', 12))
@@ -168,8 +170,10 @@ Label(frame4,text='⟡ DESCRIPTION',font=('Lucida Console', 12)).place(x=20, y=1
 descpt_label = Text(frame4,font=('Lucida Console', 12), width=14, height=5)
 descpt_label.place(x=170, y=160)
 
+#button to call switchFrame(frame4), and pokemon_characteristic(id) function
+Button(frame4, text='CHARACTERISTICS',font=('Lucida Console', 11), bg='#C6A969',border=4, command=lambda:[switchFrame(frame4),pokemon_characteristic(id)]).place(x=15, y=260)
 #button to switchFrame(frame3)
-Button(frame4, text='GENERAL INFO',font=('Lucida Console', 14), bg='#C6A969',border=8, command=lambda:switchFrame(frame3)).place(x=70, y=260)
+Button(frame4, text='GENERAL INFO',font=('Lucida Console', 11), bg='#C6A969',border=4, command=lambda:switchFrame(frame3)).place(x=190, y=260)
 
 #the first display frame is frame1
 switchFrame(frame1)
