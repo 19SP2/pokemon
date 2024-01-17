@@ -4,6 +4,7 @@ from tkinter import *
 from PIL import Image, ImageTk
 from io import BytesIO
 import webbrowser
+from tkinter import messagebox
 
 main = Tk()
 main.title("Pokedex")
@@ -61,7 +62,9 @@ def location(id):
 def pokemon_characteristic(id):
     url = f'https://pokeapi.co/api/v2/characteristic/{id}/'
     response = requests.get(url)
-    response.raise_for_status() 
+    if response.status_code==404:
+        messagebox.showinfo("showinfo", "No Information Found")
+        response.raise_for_status() 
     data = response.json()
     with open(file_name, 'w') as f:
         json.dump(data, f, indent=4)
